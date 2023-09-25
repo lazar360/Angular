@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { ParkingsComponent } from './parkings/parkings.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ParkingService } from './services/parking.service';
+
 
 @NgModule({
   declarations: [
@@ -10,9 +12,10 @@ import { ParkingsComponent } from './parkings/parkings.component';
     ParkingsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ParkingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
