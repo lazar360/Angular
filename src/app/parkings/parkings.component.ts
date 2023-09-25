@@ -10,11 +10,16 @@ import { ParkingService } from '../services/parking.service';
 export class ParkingsComponent implements OnInit{
   
   parkings: Parkinginfo[] = [];
+
   constructor(private parkingService: ParkingService){}
   
   ngOnInit(): void {
     
-    this.parkings = this.parkingService.getParkings();
-
+   this.parkingService.getParkings().subscribe(
+    res => {
+      
+      this.parkings = res;
+    }
+    )
   }
 }
