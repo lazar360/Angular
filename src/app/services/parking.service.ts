@@ -19,13 +19,14 @@ export class ParkingService {
       .pipe(
         map((response) =>
           response.results.map((parkingData: any) => {
+            console.log(parkingData);
             return {
               id: parkingData.idobj,
               nom: parkingData.nom_complet,
-              nbPlacesDispo: parkingData.capacite_voiture,
-              nbPlacesTotal: parkingData.capacite_voiture,
-              statut: parkingData.presentation,
-              heureMaj: '', // You can fill this if you have the information in the API
+              adresse: parkingData.adresse + ' - ' + parkingData.commune,
+              nbPlacesVoiture: parkingData.capacite_voiture,
+              nbPlacesMoto: parkingData.capacite_moto,
+              nbPlacesVelo: parkingData.capacite_velo
             };
           })
         )

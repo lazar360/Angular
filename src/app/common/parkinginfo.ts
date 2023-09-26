@@ -1,8 +1,8 @@
 export class Parkinginfo {
     id!:number;
     nom!: string;
-    nbPlacesDispo!:number;
-    nbPlacesTotal!:number;
-    statut!:string;
-    heureMaj!:string;
+    adresse!:string;
+    nbPlacesVoiture!:number;
+    nbPlacesMoto!:number;
+    nbPlacesVelo!:number;
 }

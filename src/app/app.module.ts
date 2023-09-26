@@ -4,7 +4,8 @@ import { AppComponent } from './app.component';
 import { ParkingsComponent } from './parkings/parkings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ParkingService } from './services/parking.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { ParkingService } from './services/parking.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [ParkingService],
   bootstrap: [AppComponent]
