@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ParkingService } from './services/parking.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule
   ],
   providers: [ParkingService],
   bootstrap: [AppComponent]
