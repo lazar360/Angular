@@ -3,6 +3,4 @@ export class Parkinginfo {
     nom!: string;
     adresse!:string;
     nbPlacesVoiture!:number;
-    nbPlacesMoto!:number;
-    nbPlacesVelo!:number;
 }

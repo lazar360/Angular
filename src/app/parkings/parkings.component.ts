@@ -5,21 +5,18 @@ import { ParkingService } from '../services/parking.service';
 @Component({
   selector: 'app-parkings',
   templateUrl: './parkings.component.html',
-  styleUrls: ['./parkings.component.css']
+  styleUrls: ['./parkings.component.css'],
 })
-export class ParkingsComponent implements OnInit{
-  
+export class ParkingsComponent implements OnInit {
   parkings: Parkinginfo[] = [];
+  isLoaded: boolean = false;
 
-  constructor(private parkingService: ParkingService){}
-  
+  constructor(private parkingService: ParkingService) {}
+
   ngOnInit(): void {
-    
-   this.parkingService.getParkings().subscribe(
-    res => {
-      
+    this.parkingService.getParkings().subscribe((res) => {
       this.parkings = res;
-    }
-    )
+      this.isLoaded = true;
+    });
   }
 }

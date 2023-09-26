@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class ParkingService {
   private url =
-    'https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_parkings-publics-nantes/records?limit=20';
+    'https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_parkings-publics-nantes-disponibilites/records?limit=20';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -21,12 +21,10 @@ export class ParkingService {
           response.results.map((parkingData: any) => {
             console.log(parkingData);
             return {
-              id: parkingData.idobj,
-              nom: parkingData.nom_complet,
-              adresse: parkingData.adresse + ' - ' + parkingData.commune,
-              nbPlacesVoiture: parkingData.capacite_voiture,
-              nbPlacesMoto: parkingData.capacite_moto,
-              nbPlacesVelo: parkingData.capacite_velo
+              identifiant: parkingData.idobj,
+              nom: parkingData.grp_nom,
+              adresse: 'longitude : ' + parkingData.location.lon + ' - latitude : ' +  parkingData.location.lat,
+              nbPlacesVoiture: parkingData.grp_disponible,
             };
           })
         )
