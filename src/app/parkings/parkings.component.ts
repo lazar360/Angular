@@ -16,36 +16,53 @@ export class ParkingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadParkingsData();
-        }
-      
-        loadParkingsData(): void {
-          forkJoin([
-            this.parkingService.getParkings(),
-            this.parkingService.getAddressParkings(),
-          ]).subscribe((data) => {
-            const parkingsWithAddress: Parkinginfo[] = data[1].reduce(
-              (result: Parkinginfo[], item: Parkinginfo) => {
-                const parking = data[0].find((p) => p.id === item.id); 
-      
-                if (parking) {
-                  result.push({
-                    id: parking.id,
-                    nom: parking.nom,
-                    adresse: item.adresse,
-                    nbPlacesVoiture: parking.nbPlacesVoiture,
-                  });
-                }
-      
-                return result;
-              },
-              []
-            );
-      
-            this.parkings = parkingsWithAddress;
-          });
-        }
-      }
-      
-      
-  
+  }
 
+  loadParkingsData(): void {
+    forkJoin([
+      this.parkingService.getParkings(),
+      this.parkingService.getAddressParkings(),
+    ]).subscribe((data) => {
+      // Concat Data sur un seul tableau
+      const concatData = data[0].concat(data[1]);
+     // console.log(concatData);
+      let id: number,
+        nbPlacesVoiture;
+      let nom,
+        adresse;
+      let obj:Parkinginfo;
+      let parkingsTmp: Parkinginfo[] = [];
+      for (let i: number = 0; i < concatData.length; i++) {
+        id = concatData[i].id;
+        nom = concatData.find(function (element) {
+          if (element.nom && element.id === id){
+            return element.nom;
+          }
+          return '';
+        });
+        adresse = concatData.find(function (element) {
+          if (element.adresse && element.id === id){
+            return element.adresse;
+          }
+          return '';
+        });
+        nbPlacesVoiture = concatData.find(function (element) {
+          if (element.nbPlacesVoiture && element.id === id){
+            return element.nbPlacesVoiture;
+          }
+          return 0;
+        });
+        obj = {
+          id: Number(id),
+          nom:nom?.nom,
+          nbPlacesVoiture: Number(nbPlacesVoiture?.nbPlacesVoiture), 
+          adresse:adresse?.adresse,
+        } 
+        parkingsTmp.push(obj);
+      }
+
+      // console.log(parkingsTmp);
+      this.parkings = parkingsTmp;
+    });
+  }
+}

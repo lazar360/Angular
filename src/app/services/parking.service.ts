@@ -22,9 +22,9 @@ export class ParkingService {
       .pipe(
         map((response) =>
           response.results.map((parkingData: any) => {
-            // console.log(parkingData);
+             // console.log(parkingData);
             return {
-              identifiant: parkingData.idobj,
+              id: parkingData.idobj,
               nom: parkingData.grp_nom,
               nbPlacesVoiture: parkingData.grp_disponible,
             };
@@ -41,7 +41,7 @@ export class ParkingService {
           response.results.map((parkingData: any) => {
             // console.log(parkingData);
             return {
-              identifiant: parkingData.idobj,
+              id: parkingData.idobj,
               adresse: parkingData.adresse + ' - ' + parkingData.commune
             };
           })
