@@ -1,0 +1,10 @@
+.toolbar{
+    display: flex;
+    justify-content: space-around;
+}
+.logo>img{
+    margin-top: 13px;
+    width: 25%;
+    height: 25%;
+    object-fit: contain;
+}
