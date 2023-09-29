@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Parkinginfo } from '../common/parkinginfo';
 import { ParkingService } from '../services/parking.service';
 import { forkJoin } from 'rxjs';
+import { faCarSide } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-parkings',
@@ -9,6 +10,7 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./parkings.component.css'],
 })
 export class ParkingsComponent implements OnInit {
+  faCarSide = faCarSide;
   parkings: Parkinginfo[] = [];
   isLoaded: boolean = false;
 
@@ -65,4 +67,20 @@ export class ParkingsComponent implements OnInit {
       this.parkings = parkingsTmp;
     });
   }
+
+  calculStyleNbrePlaces(parking:Parkinginfo){
+    if(parking.nbPlacesVoiture){
+      switch(true){
+        case parking.nbPlacesVoiture <= 10 : 
+        return {color:'red'};
+        case parking.nbPlacesVoiture > 10 && parking.nbPlacesVoiture <= 50 :
+          return {color:'orange'};
+        default : 
+          return {color:'green'};
+      }
+    } else {
+      return {color:'green'};
+    }
+  }
+
 }
