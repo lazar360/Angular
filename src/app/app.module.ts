@@ -12,9 +12,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Routes, RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { ParkingsRelaisComponent } from './parkings-relais/parkings-relais.component';
 
 const routes:Routes =[
   {path:'parkings', component: ParkingsComponent},
+  {path:'parkings-relais', component: ParkingsRelaisComponent},
   {path:'', redirectTo:'/parkings', pathMatch:'full'},
   {path:'**', redirectTo:'/parkings', pathMatch:'full'},
 ];
@@ -22,7 +24,8 @@ const routes:Routes =[
 @NgModule({
   declarations: [
     AppComponent,
-    ParkingsComponent
+    ParkingsComponent,
+    ParkingsRelaisComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

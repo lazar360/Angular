@@ -1,8 +1,8 @@
 <!-- Menu -->
-<button mat-button class="menu" [matMenuTriggerFor]="menu">Choix du type de parking</button>
+<button mat-button class="menu" [matMenuTriggerFor]="menu">Sélection type parking</button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item routerLink="/parkings">Parkings payants</button>
-  <button mat-menu-item>Parkings-relais</button>
+  <button mat-menu-item routerLink="/parkings-relais">Parkings-relais</button>
 </mat-menu>
 
 <!-- Liste -->
