@@ -43,7 +43,8 @@ export class ParkingService {
             // console.log(parkingData);
             return {
               id: parkingData.idobj,
-              adresse: parkingData.adresse + ' - ' + parkingData.commune
+              adresse: parkingData.adresse + ' - ' + parkingData.commune,
+              localisation:parkingData, // attention tableau [lon, lat]
             };
           })
         )

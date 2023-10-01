@@ -29,7 +29,7 @@ export class ParkingsComponent implements OnInit {
       const concatData = data[0].concat(data[1]);
       // console.log(concatData);
       let id: number, nbPlacesVoiture;
-      let nom, adresse, heureMAJ;
+      let nom, adresse, heureMAJ, localisation;
       let obj: Parkinginfo;
       let parkingsTmp: Parkinginfo[] = [];
       for (let i: number = 0; i < concatData.length; i++) {
@@ -58,12 +58,19 @@ export class ParkingsComponent implements OnInit {
           }
           return '';
         });
+        localisation= concatData.find(function (element) {
+          if (element.localisation && element.id === id) {
+            return element.localisation;
+          }
+          return '';
+        });
         obj = {
           id: Number(id),
           nom: nom?.nom,
           nbPlacesVoiture: Number(nbPlacesVoiture?.nbPlacesVoiture),
           adresse: adresse?.adresse,
           heureMAJ:heureMAJ?.heureMAJ,
+          localisation:localisation?.localisation,
         };
         parkingsTmp.push(obj);
         

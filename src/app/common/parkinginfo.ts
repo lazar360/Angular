@@ -4,4 +4,5 @@ export class Parkinginfo {
     adresse!:string | undefined;
     nbPlacesVoiture!:number | undefined;
     heureMAJ!:string | undefined;
+    localisation!:string | undefined;
 }
