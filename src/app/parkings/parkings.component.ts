@@ -27,39 +27,44 @@ export class ParkingsComponent implements OnInit {
     ]).subscribe((data) => {
       // Concat Data sur un seul tableau
       const concatData = data[0].concat(data[1]);
-     // console.log(concatData);
-      let id: number,
-        nbPlacesVoiture;
-      let nom,
-        adresse;
-      let obj:Parkinginfo;
+      // console.log(concatData);
+      let id: number, nbPlacesVoiture;
+      let nom, adresse, heureMAJ;
+      let obj: Parkinginfo;
       let parkingsTmp: Parkinginfo[] = [];
       for (let i: number = 0; i < concatData.length; i++) {
         id = concatData[i].id;
         nom = concatData.find(function (element) {
-          if (element.nom && element.id === id){
+          if (element.nom && element.id === id) {
             return element.nom;
           }
           return '';
         });
         adresse = concatData.find(function (element) {
-          if (element.adresse && element.id === id){
+          if (element.adresse && element.id === id) {
             return element.adresse;
           }
           return '';
         });
         nbPlacesVoiture = concatData.find(function (element) {
-          if (element.nbPlacesVoiture && element.id === id){
+          if (element.nbPlacesVoiture && element.id === id) {
             return element.nbPlacesVoiture;
           }
           return 0;
         });
+        heureMAJ= concatData.find(function (element) {
+          if (element.heureMAJ && element.id === id) {
+            return element.heureMAJ;
+          }
+          return '';
+        });
         obj = {
           id: Number(id),
-          nom:nom?.nom,
-          nbPlacesVoiture: Number(nbPlacesVoiture?.nbPlacesVoiture), 
-          adresse:adresse?.adresse,
-        } 
+          nom: nom?.nom,
+          nbPlacesVoiture: Number(nbPlacesVoiture?.nbPlacesVoiture),
+          adresse: adresse?.adresse,
+          heureMAJ:heureMAJ?.heureMAJ,
+        };
         parkingsTmp.push(obj);
       }
 
@@ -68,19 +73,18 @@ export class ParkingsComponent implements OnInit {
     });
   }
 
-  calculStyleNbrePlaces(parking:Parkinginfo){
-    if(parking.nbPlacesVoiture){
-      switch(true){
-        case parking.nbPlacesVoiture <= 10 : 
-        return {color:'red'};
-        case parking.nbPlacesVoiture > 10 && parking.nbPlacesVoiture <= 50 :
-          return {color:'orange'};
-        default : 
-          return {color:'green'};
+  calculStyleNbrePlaces(parking: Parkinginfo) {
+    if (parking.nbPlacesVoiture) {
+      switch (true) {
+        case parking.nbPlacesVoiture <= 10:
+          return { color: 'red' };
+        case parking.nbPlacesVoiture > 10 && parking.nbPlacesVoiture <= 50:
+          return { color: 'orange' };
+        default:
+          return { color: 'green' };
       }
     } else {
-      return {color:'green'};
+      return { color: 'green' };
     }
   }
-
 }

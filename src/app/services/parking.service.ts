@@ -27,6 +27,7 @@ export class ParkingService {
               id: parkingData.idobj,
               nom: parkingData.grp_nom,
               nbPlacesVoiture: parkingData.grp_disponible,
+              heureMAJ: parkingData.grp_horodatage,
             };
           })
         )
