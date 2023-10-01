@@ -66,10 +66,11 @@ export class ParkingsComponent implements OnInit {
           heureMAJ:heureMAJ?.heureMAJ,
         };
         parkingsTmp.push(obj);
+        
       }
 
       // console.log(parkingsTmp);
-      this.parkings = parkingsTmp;
+      this.parkings = [...new Set(parkingsTmp)];
     });
   }
 

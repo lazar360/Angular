@@ -5,9 +5,14 @@
     top: 0;
     z-index: 1000;
 }
+
 .logo>img{
     margin-top: 13px;
     width: 25%;
     height: 25%;
     object-fit: contain;
+}
+
+.menu{
+   margin-left: 2%;
 }
