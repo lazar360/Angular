@@ -17,7 +17,7 @@ private urlAddress =
 
 constructor(private httpClient: HttpClient) {}
 
-getParkings(): Observable<Parkinginfo[]> {
+getParkingsRelais(): Observable<Parkinginfo[]> {
   return this.httpClient
     .get<any>(this.urlPlacesDispo) // Use "any" here to handle the API response
     .pipe(
@@ -35,7 +35,7 @@ getParkings(): Observable<Parkinginfo[]> {
     );
 }
 
-getAddressParkings(): Observable<Parkinginfo[]> {
+getAddressParkingsRelais(): Observable<Parkinginfo[]> {
   return this.httpClient
     .get<any>(this.urlAddress) // Use "any" here to handle the API response
     .pipe(

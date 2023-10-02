@@ -3,6 +3,7 @@ import { Parkinginfo } from '../common/parkinginfo';
 import { ParkingService } from '../services/parking.service';
 import { forkJoin } from 'rxjs';
 import { faCarSide } from '@fortawesome/free-solid-svg-icons';
+import { ParkingsRelaisService } from '../services/parkings-relais.service';
 
 @Component({
   selector: 'app-parkings-relais',
@@ -15,7 +16,7 @@ export class ParkingsRelaisComponent implements OnInit{
   parkings: Parkinginfo[] = [];
   isLoaded: boolean = false;
  
-  constructor(private parkingService: ParkingService) {}
+  constructor(private parkingService: ParkingsRelaisService) {}
 
   ngOnInit(): void {
     this.loadParkingsData();
@@ -23,8 +24,8 @@ export class ParkingsRelaisComponent implements OnInit{
 
   loadParkingsData(): void {
     forkJoin([
-      this.parkingService.getParkings(),
-      this.parkingService.getAddressParkings(),
+      this.parkingService.getParkingsRelais(),
+      this.parkingService.getAddressParkingsRelais(),
     ]).subscribe((data) => {
       // Concat Data sur un seul tableau
       const concatData = data[0].concat(data[1]);
