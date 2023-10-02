@@ -1,1 +1,26 @@
-<p>parkings-relais works!</p>
+<!-- Menu -->
+<button mat-button class="menu" [matMenuTriggerFor]="menu">Sélection type parking</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/parkings">Parkings payants</button>
+  <button mat-menu-item routerLink="/parkings-relais">Parkings-relais</button>
+</mat-menu>
+
+<!-- Liste -->
+<div *ngFor="let parking of parkings">
+  <div *ngIf="parking.nbPlacesVoiture">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title [ngStyle]="calculStyleNbrePlaces(parking)">{{ parking.nom }}</mat-card-title>
+        <mat-card-subtitle>{{ parking.adresse }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          A {{parking.heureMAJ | date: 'HH:mm'}}, places disponibles
+          <fa-icon [icon]="faCarSide" [ngStyle]="calculStyleNbrePlaces(parking)"></fa-icon>
+          : {{ parking.nbPlacesVoiture }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <hr />
+  </div>
+</div>

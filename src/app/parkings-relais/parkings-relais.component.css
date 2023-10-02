@@ -1,0 +1,11 @@
+mat-card-header, mat-card-content{
+    padding-left: 20%;
+}
+
+mat-card-actions{
+    padding-left: 40%;
+}
+
+.menu{
+    margin-left: 2%;
+ }

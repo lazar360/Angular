@@ -44,7 +44,7 @@ export class ParkingService {
             return {
               id: parkingData.idobj,
               adresse: parkingData.adresse + ' - ' + parkingData.commune,
-              localisation:parkingData, // attention tableau [lon, lat]
+              localisation:parkingData.location, // attention tableau [lon, lat]
             };
           })
         )
